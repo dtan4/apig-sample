@@ -1,0 +1,16 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.4
+    environment:
+      - POSTGRES_PASSWORD=password
+  web:
+    build: .
+    environment:
+      - DATABASE_URL=postgres://postgres:password@db:5432/apig?sslmode=disable
+    ports:
+      - "8080:8080"
+  web-migrate:
+    extends: web
+    environment:
+      - AUTOMIGRATE=1
