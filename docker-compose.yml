@@ -3,6 +3,7 @@ services:
   db:
     image: postgres:9.4
     environment:
+      - POSTGRES_DB=apig
       - POSTGRES_PASSWORD=password
   web:
     build: .
